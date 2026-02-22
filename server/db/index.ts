@@ -1,4 +1,4 @@
-import { PrismaClient } from "@prisma/client" // need to fix this 
+import { PrismaClient } from "@prisma/client" 
 
 const createPrismaClient = () =>{
     return new PrismaClient()
