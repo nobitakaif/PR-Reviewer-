@@ -11,7 +11,8 @@ const handler = ((req: Request)=> {
         router : appRouter,
         createContext : () =>{
             return createContext({req : req})
-        }
+        },
+        onError : process.env.NODE_ENV === 'development' ? console.error : console.error
     })
 })
 

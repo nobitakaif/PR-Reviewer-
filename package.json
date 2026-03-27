@@ -13,6 +13,7 @@
     "@prisma/client": "^7.5.0",
     "@tanstack/react-query": "^5.91.3",
     "@trpc/client": "^11.14.0",
+    "@trpc/react-query": "^11.15.1",
     "@trpc/server": "^11.14.0",
     "@trpc/tanstack-react-query": "^11.14.0",
     "client-only": "^0.0.1",
