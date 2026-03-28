@@ -32,7 +32,6 @@ export default function RootLayout({
         <TRPCProvider>
           {children}
         </TRPCProvider>
-        
       </body>
     </html>
   );
