@@ -5,5 +5,18 @@ import { db } from "@/prisma/client";
 export const auth = betterAuth({
     database: prismaAdapter(db,{
         provider : "postgresql"
-    })
+    }),
+    logger : {
+        level : "debug",
+        disabled : false
+    },
+    emailAndPassword : {
+        enabled : true
+    },
+    socialProviders : {
+        github : {
+            clientId : process.env.GITHUB_CLIENT_ID!,
+            clientSecret : process.env.GITHUB_CLIENT_SECRET 
+        }
+    },
 });
