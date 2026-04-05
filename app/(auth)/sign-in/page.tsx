@@ -9,6 +9,8 @@ import { FaGithub } from "react-icons/fa"
 import { Label } from "@/components/ui/label"
 import { Input } from "@/components/ui/input"
 import { FieldInfo } from "@/components/fieldInfo"
+import { toast } from "sonner"
+import Link from "next/link"
 
 
 export default function Signin() {
@@ -22,6 +24,7 @@ export default function Signin() {
             callbackURL: "/repos"
         })
         setLoading(false)
+        toast.success("you're logged in")
     }
 
     const form = useForm({
@@ -31,14 +34,20 @@ export default function Signin() {
         },
         onSubmit: async ({ value }) => {
             console.log(value.email, "   ", value.password)
-            await signUp.email({ 
+            const {data, error} = await signIn.email({ 
                 email : value.email,
-                name : "Mohd Kaif", 
-                password : value.password
-             })
+                password : value.password,
+                callbackURL : "/repos"
+            })
+            if(error){
+                toast.error(error.message)
+                return 
+            } 
             console.log("user is logged successfully!")
             alert("alright")
+            toast.success("you're logged in " + data.user.name )
             form.reset()
+            
         }
     })
 
@@ -106,7 +115,7 @@ export default function Signin() {
                                 selector={(state)=> [state.canSubmit, state.isSubmitting]}
                                 children={([cansubmit, isSubmitting])=> (
                                     <>
-                                    <Button type="submit" disabled={!cansubmit} variant={"outline"}> {isSubmitting ? "..." : "SignIn"}</Button>
+                                    <Button type="submit" disabled={!cansubmit} variant={"outline"} className="border-gray-300 hover:border-gray-800"> {isSubmitting ? "..." : "SignIn"}</Button>
                                     </>
                                 )}
                             />
@@ -114,8 +123,11 @@ export default function Signin() {
                     </form>
                 </div>
             </CardContent>
-
-
+            <CardFooter className="border-none">
+                <div className="w-full text-center">
+                    don&apos;t have an account? <span><Link href={"/sign-up"}>SignUp</Link></span>
+                </div>
+            </CardFooter>
         </Card>
     </div>
 }
