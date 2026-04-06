@@ -11,6 +11,7 @@ import { Input } from "@/components/ui/input"
 import { FieldInfo } from "@/components/fieldInfo"
 import { toast } from "sonner"
 import Link from "next/link"
+import { redirect } from "next/navigation"
 
 
 export default function Signin() {
@@ -47,7 +48,7 @@ export default function Signin() {
             alert("alright")
             toast.success("you're logged in " + data.user.name )
             form.reset()
-            
+            redirect("/repos")
         }
     })
 
