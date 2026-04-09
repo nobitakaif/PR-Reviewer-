@@ -61,3 +61,13 @@ export type Account = Prisma.AccountModel
  * 
  */
 export type Verification = Prisma.VerificationModel
+/**
+ * Model Repository
+ * 
+ */
+export type Repository = Prisma.RepositoryModel
+/**
+ * Model Reviews
+ * 
+ */
+export type Reviews = Prisma.ReviewsModel

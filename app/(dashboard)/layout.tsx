@@ -13,7 +13,8 @@ export default async function DashboardLayout({children} : {children : ReactNode
     const session = await auth.api.getSession({headers : await headers()})
 
     if(!session?.user.id){
-        redirect("sign-in")
+        console.log("user is nt logged-in")
+        redirect("/sign-in")
     }
 
     return <div className="min-h-screen ">

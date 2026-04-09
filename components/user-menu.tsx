@@ -3,7 +3,7 @@ import { useRouter } from "next/navigation"
 import { DropdownMenuTrigger, DropdownMenu, DropdownMenuContent, DropdownMenuSeparator, DropdownMenuItem } from "./ui/dropdown-menu"
 import { Button } from "./ui/button"
 import { Avatar, AvatarFallback, AvatarImage } from "./ui/avatar"
-import { ChevronDownCircleIcon, Settings, User } from "lucide-react"
+import { ChevronDownCircleIcon, LogOut, Settings, User } from "lucide-react"
 import { FaChevronCircleDown } from "react-icons/fa"
 
 interface UserProps{
@@ -54,8 +54,11 @@ export function UserMenu({user} : {user: UserProps}){
                 <User className="size-4"/> Profile
             </DropdownMenuItem>
             <DropdownMenuItem className="gap-2 py-2 cursor-pointer hover:bg-gray-300/30" disabled>
-                <Settings className="size-4"/>
-                Settings
+                <Settings className="size-4"/> Settings
+            </DropdownMenuItem >
+            <div className="h-px bg-gray-600 w-full"></div>
+            <DropdownMenuItem onClick={handleSignOut} className="gap-2 py-2 cursor-pointer text-destructive focus:text-red-500 focus:bg-gray-100 m-1 flex items-center">
+                <LogOut className="size-4 text-black"/> Log out
             </DropdownMenuItem>
         </DropdownMenuContent>
     </DropdownMenu>
